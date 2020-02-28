@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Kore\\source\\repos\\Project_Vacation_Manager\\Project_Vacation_Manager.csproj": {}
+    "C:\\Users\\Kore\\Documents\\GitHub\\revisited_it_project_2020\\Project_Vacation_Manager.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Kore\\source\\repos\\Project_Vacation_Manager\\Project_Vacation_Manager.csproj": {
+    "C:\\Users\\Kore\\Documents\\GitHub\\revisited_it_project_2020\\Project_Vacation_Manager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kore\\source\\repos\\Project_Vacation_Manager\\Project_Vacation_Manager.csproj",
+        "projectUniqueName": "C:\\Users\\Kore\\Documents\\GitHub\\revisited_it_project_2020\\Project_Vacation_Manager.csproj",
         "projectName": "Project_Vacation_Manager",
-        "projectPath": "C:\\Users\\Kore\\source\\repos\\Project_Vacation_Manager\\Project_Vacation_Manager.csproj",
+        "projectPath": "C:\\Users\\Kore\\Documents\\GitHub\\revisited_it_project_2020\\Project_Vacation_Manager.csproj",
         "packagesPath": "C:\\Users\\Kore\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kore\\source\\repos\\Project_Vacation_Manager\\obj\\",
+        "outputPath": "C:\\Users\\Kore\\Documents\\GitHub\\revisited_it_project_2020\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Kore\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -51,6 +51,10 @@
               "version": "[3.1.1, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[3.1.1, )"
             },

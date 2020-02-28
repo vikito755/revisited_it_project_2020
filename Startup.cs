@@ -36,6 +36,9 @@ namespace Project_Vacation_Manager
             services.AddControllersWithViews();
             services.AddRazorPages();
 
+            services.AddDbContext<Project_Vacation_ManagerContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("Project_Vacation_ManagerContext")));
+
 
             
         }
