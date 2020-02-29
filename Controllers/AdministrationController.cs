@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Project_Vacation_Manager.Data;
 using Project_Vacation_Manager.ViewModels;
@@ -61,6 +62,7 @@ namespace Project_Vacation_Manager.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "CEO")]
         public async Task<IActionResult> DeleteUser(string id)
         {
             var user = await userManager.FindByIdAsync(id);
@@ -89,6 +91,7 @@ namespace Project_Vacation_Manager.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "CEO")]
         public async Task<IActionResult> EditUser(string id)
         {
             var user = await userManager.FindByIdAsync(id);
@@ -223,8 +226,5 @@ namespace Project_Vacation_Manager.Controllers
 
             return RedirectToAction("EditUser", new { Id = userId });
         }
-
-
-
     }
 }

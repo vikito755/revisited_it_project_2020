@@ -44,6 +44,7 @@ namespace Project_Vacation_Manager.Controllers
         }
 
         // GET: Teams/Create
+        [Authorize(Roles = "CEO")]
         public IActionResult Create()
         {
             return View();

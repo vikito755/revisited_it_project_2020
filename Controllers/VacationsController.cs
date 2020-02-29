@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -56,6 +57,8 @@ namespace Project_Vacation_Manager.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,User,FromDate,ToDate,DateCreation,IsIll,IsConf")] Vacation vacation)
         {
+            vacation.DateCreation = DateTime.Now;
+            vacation.User = User.Identity.Name;
             if (ModelState.IsValid)
             {
                 _context.Add(vacation);
@@ -66,6 +69,7 @@ namespace Project_Vacation_Manager.Controllers
         }
 
         // GET: Vacations/Edit/5
+        [Authorize(Roles = "CEO, Team Lead")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -81,10 +85,12 @@ namespace Project_Vacation_Manager.Controllers
             return View(vacation);
         }
 
+
         // POST: Vacations/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "CEO")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,User,FromDate,ToDate,DateCreation,IsIll,IsConf")] Vacation vacation)
         {
@@ -93,11 +99,14 @@ namespace Project_Vacation_Manager.Controllers
                 return NotFound();
             }
 
+
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(vacation);
+                    // _context.
+                    _context.Vacation.Attach(vacation).Property(x => x.IsConf).IsModified = true;
+                    //_context.Update(vacation);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -115,6 +124,7 @@ namespace Project_Vacation_Manager.Controllers
             }
             return View(vacation);
         }
+
 
         // GET: Vacations/Delete/5
         public async Task<IActionResult> Delete(int? id)
