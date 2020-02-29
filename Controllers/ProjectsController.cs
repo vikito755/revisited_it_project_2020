@@ -23,6 +23,7 @@ namespace Project_Vacation_Manager.Controllers
         // GET: Projects
         public async Task<IActionResult> Index()
         {
+
             return View(await _context.Project.ToListAsync());
         }
 
@@ -36,6 +37,8 @@ namespace Project_Vacation_Manager.Controllers
 
             var project = await _context.Project
                 .FirstOrDefaultAsync(m => m.Id == id);
+            project.Teams = _context.Team.Where(x => x.Project == project.Name).ToList();
+          
             if (project == null)
             {
                 return NotFound();
