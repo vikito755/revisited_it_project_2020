@@ -36,6 +36,8 @@ namespace Project_Vacation_Manager.Controllers
 
             var team = await _context.Team
                 .FirstOrDefaultAsync(m => m.Id == id);
+
+            //team.People = _context.
             if (team == null)
             {
                 return NotFound();

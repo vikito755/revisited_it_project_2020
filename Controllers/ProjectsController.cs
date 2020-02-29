@@ -54,6 +54,17 @@ namespace Project_Vacation_Manager.Controllers
             return View();
         }
 
+        [Authorize(Roles = "CEO")]
+        public async Task<RedirectToActionResult> DeleteTeamAsync(Team teamm)
+        {
+            //var teamm = _context.Team[id];
+        //    teamm.Project = "";
+            
+          //  _context.Team.Update(teamm);
+            //var r = await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
         // POST: Projects/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.

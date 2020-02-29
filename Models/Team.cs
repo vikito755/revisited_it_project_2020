@@ -11,5 +11,6 @@ namespace Project_Vacation_Manager.Models
         public string Name { get; set; }
         public string Project { get; set; }
         public string TeamLead { get; set; }
+        public List<ApplicationIdentity> People {get; set; }
     }
 }
